@@ -1,0 +1,172 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+}
+
+.container {
+    width: 100%;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #153677, #4e085f);
+    padding: 10px;
+}
+
+.todo-app{
+  width: 100%;
+  max-width: 540px;
+  background: #fff;
+  margin: 100px auto 20px;  /* left-right auto */
+  padding: 40px 30px 70px;  /* left-right 30px */
+  border-radius: 10px;
+}
+
+.todo-app h2{
+  color: #002765;
+  display: flex;
+  align-items: center;  /* text neeche aur center m aa jayega */
+  margin-left: 10px;  /* h2 left m shift ho jayegi */
+}
+
+.todo-app h2 img{
+  width: 30px;  /* ise img chhoti ho jayegi */
+  margin-left: 10px; /* img left m shift ho jayegi */
+}
+
+.row{
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* It places the first item at the start of the container. It places the last item at the end of the container. */
+  background: #edeef0;
+  border-radius: 30px;
+  padding-left: 20px;   /* It places the first item left */
+  margin-bottom: 25px;  /* It adds space below the element, pushing any following content or elements 25px down. */
+}
+
+input{
+  flex: 1;  /* This makes any <input> element expand to fill available space inside a flex container. */
+  border: none;
+  outline: none;  /* It removes the outline that browsers automatically apply to elements (like <input>, <textarea>, or <button>) when they are focused (clicked or tabbed into). */
+  background: transparent;
+  padding: 10px;
+}
+
+button{
+  border: none;
+  outline: none;
+  padding: 16px 50px; /* 16px for the top and bottom, 50px for the left and right */
+  background: #ff5945;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 40px;
+}
+
+ul li{
+  display: flex;
+  list-style: none; /* It removes default list styling, such as bullets in <ul> or numbers in <ol>. */
+  font-size: 17px;
+  padding: 12px 8px 12px 50px;  /* Adds space inside the list item: top, right, bottom, left */
+  user-select: none;  /* It prevents the user from selecting text within the element — no click-and-drag highlighting, no text copying via mouse or keyboard.*/
+  cursor: pointer;
+  position: relative;   /* Allows absolutely positioned child elements (like ::before) to be placed relative to this list item. */
+}
+
+/* ul li::before 👉 Yeh bullet • symbol ko <li> ke andar top-left mein chipka dega — lekin sirf tab jab <li> ko relative diya ho.
+::before ne bullet add kiya hai
+absolute ne us bullet ko exact jagah rakha
+Aur relative ne ensure kiya ki bullet usi list item ke andar chipka rahe */
+ul li::before{  /* “Before each list item (<li>) inside an unordered list (<ul>), apply the specified style or content.” */
+  content: '';
+  position: absolute;
+  height: 28px;
+  width: 28px;
+  border-radius: 50%;   /* Makes it a circle */
+  background-image: url(unchecked.png);   /* Adds the image 'checked.png' */
+  background-size: cover;   /* Ensures the image fully covers the circle */
+  background-position: center;  /* Centers the image inside the circle */
+  top: 12px; /* Moves the circle 12px from the top */
+  left: 8px; /* Moves the circle 8px from the left */
+}
+
+ul li.checked{
+  color: #555;
+  text-decoration: line-through;  /* Ye CSS property text ke upar se ek line kheenchti hai */
+}
+
+ul li.checked::before {
+  background-image: url(checked.png);
+}
+
+ul li span{
+  position: absolute; /* span ko bilkul exact jagah pe chipkane ke liye */
+  right: 0;           /* right side se 0 px distance (i.e. bilkul right end pe) */
+  top: 5px;           /* top se 5px niche rakha gaya hai */
+  width: 40px;        /* span ki width fixed 40 pixels */
+  height: 40px;       /* span ki height fixed 40 pixels */
+  font-size: 22px;    /* text ka size 22px hoga */
+  color: #555;      /* text ka color grey shade (#555) */
+  line-height: 40px;  /* text vertically center dikhane ke liye (equal to height) */
+  text-align: center;  /* kisi element ke andar ka text ya inline content ko center karta hai horizontally (left–right ke beech). */
+  border-radius: 50%;
+}
+
+ul li span:hover {
+  background: #edeef0;
+}
+
+
+/*
+https://www.youtube.com/results?search_query=todo+app+javascript
+https://www.youtube.com/watch?v=YqoTm7wYPG8
+*/
+
+
+/* NOTES:
+ 
+Line_5 :
+🔹 box-sizing CSS property kya karta hai?
+box-sizing decide karta hai ki element ki width aur height ka calculation kaise hoga — specifically, kya padding aur border ko usme include kiya jayega ya nahi.
+
+🔸 2 Main Values:
+1. content-box (Default)
+    Width/height sirf content ke liye hoti hai
+
+    Padding & border alag se add hote hain
+
+    ➤ Final box size badh jaata hai
+
+.box {
+  width: 200px;
+  padding: 20px;
+  border: 10px solid black;
+  box-sizing: content-box;
+}
+✅ Total width = 200 + 20×2 + 10×2 = 260px
+
+2. border-box
+    Width/height mein padding aur border already include hote hain
+
+    ➤ Final box size fix rehta hai
+
+.box {
+  width: 200px;
+  padding: 20px;
+  border: 10px solid black;
+  box-sizing: border-box;
+}
+✅ Total width = 200px hi rahegi (content ki space kam ho jaayegi)
+
+Line_3 :
+🔹 Padding kya hota hai (CSS mein)?
+padding ek CSS property hai jo element ke content aur uske border ke beech ki space ko define karti hai.
+
+🔸 Padding ki values kaise likhte hain?
+Syntax	    Meaning
+padding:    20px;	Sab sides pe 20px
+padding:    10px 20px;	Top-Bottom = 10px, Left-Right = 20px
+padding:    10px 15px 20px 5px;	Top = 10, Right = 15, Bottom = 20, Left = 5 */
+
+
+
+
