@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App - Easy Tutorials</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="card">
+        <div class="search">
+            <input type="text" placeholder="enter city name" spellcheck="false">
+            <button><img src="images/search.png"></button>
+        </div>
+        <!-- // suppose we enter the wrong city name and click on the search icon -->
+        <!-- // so it is displaying undefined and the previous data  -->
+        <!-- // so it should display one error msg -->
+        <div class="error">
+            <p>Invalid city name </p>
+        </div>
+        <div class="weather">
+            <img src="images/rain.png" class="weather-icon">
+            <h1 class="temp">22°c</h1>
+            <h2 class="city">New York</h2>
+            <!-- display humidity icon and wind icon and the value  -->
+            <div class="details">
+                <div class="col">
+                    <img src="images/humidity.png">
+                    <div>
+                        <p class="humidity">50%</p>
+                        <p>Humidity</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <img src="images/wind.png">
+                    <div>
+                        <p class="wind">15 km/h</p>
+                        <p>Wind Speed</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        const apiKey = "18d3ecb5f12f9b200effa525a62a207e";
+        // const apiUrl = "https://api.openweathermap.org/data/2.5/weather?units=metric&q=bangalore";
+        // In this apiUrl we need to enter the city name in this input box and that city information will be displayed in this app
+        const apiUrl = "https://api.openweathermap.org/data/2.5/weather?units=metric&q=";
+        // we will add the city name through this checkWheather function
+
+        const searchBox = document.querySelector(".search input");
+        // when people will click on this search button it will send the city information in this checkWheather function
+        const searchBtn = document.querySelector(".search button");
+        const weatherIcon = document.querySelector(".weather-icon");
+
+        async function checkWeather(city){
+            const response = await fetch(apiUrl + city + `&appid=${apiKey}`);
+
+            /* if i refresh the website this error msg is displaying by default
+            so we have to hide this error msg and it will be displayed whenever user will enter any wrong city name 
+            */
+            /* if know i enter any wrong city name it is not displaying anything 
+            so we have to display error msg  */
+            if(response.status == 404){     // if the city name is invalid it will give the status 404
+                // then we have to display the error msg and we have to hide the weather info. 
+                document.querySelector(".error").style.display = "block";
+                document.querySelector(".weather").style.display = "none";
+            } else {
+                var data = await response.json();
+
+                // innerHTML update the text written in this element 
+                document.querySelector(".city").innerHTML = data.name;
+                // document.querySelector(".temp").innerHTML = data.main.temp + "°c";
+                // we have to round off this temp so it will display only the integer either 26 or 27 degree celsius 
+                // we need the percentage degree celsius and kilometer per hour 
+                document.querySelector(".temp").innerHTML = Math.round(data.main.temp) + "°c";
+                document.querySelector(".humidity").innerHTML = data.main.humidity + "%";
+                document.querySelector(".wind").innerHTML = data.wind.speed + " km/h";
+
+                // Update the weather image according to the weather condition 
+                if(data.weather[0].main == "Clouds"){
+                    // add the cloud img
+                    weatherIcon.src = "images/clouds.png";
+                } else if(data.weather[0].main == "Clear") {
+                    weatherIcon.src = "images/clear.png";
+                } else if(data.weather[0].main == "Rain"){
+                    weatherIcon.src = "images/rain.png";
+                } else if(data.weather[0].main == "Drizzle"){
+                    weatherIcon.src = "images/drizzle.png";
+                } else if(data.weather[0].main == "Mist"){
+                    weatherIcon.src = "images/,ist.png";
+                }
+
+                // In css .weather{display: none};
+                // This means the weather details (temperature, city name, humidity, wind speed) are hidden by default.
+                // So when a user enters a city name and clicks the search button, we use:
+                // ✅ to show the weather info after the API call gives the result.
+                document.querySelector(".weather").style.display = "block";
+                // error msg hidden when it is displaying the data 
+                document.querySelector(".error").style.display = "none";
+            }
+
+        }
+
+        // city name come from the input field
+        searchBtn.addEventListener("click", () => {
+            // this checkWeather function will have the city information written in the input field 
+            // To get the data written in the input field we'll add the searchBox.value
+            checkWeather(searchBox.value);  // This will give the city name written in the input field and it will paas the city name in this "Line 49 : async function checkWeather(city)"
+        })
+        
+    </script>
+</body>
+</html>

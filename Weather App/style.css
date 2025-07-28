@@ -1,0 +1,154 @@
+* {
+    margin: 0;  /* Har element ke 4 sides ka default outer space (margin) hata deta hai */
+    padding: 0; /* Har element ke 4 sides ka default inner space (padding) hata deta hai */
+    font-family: 'Poppins', sans-serif; /* Har element ke liye font family set karta hai — agar 'Poppins' na mile to sans-serif fallback hoga */
+    box-sizing: border-box; /* Padding aur border ko element ki total width/height me include karta hai — layout control me easy hota hai */
+}
+
+
+body {
+    background-color: #222;
+}
+
+.card{
+    width: 90%; /* Card ki width screen ke 90% tak rahegi */
+    max-width: 470px;   /* Par agar screen badi ho, to card ki max-width 470px tak hi rahegi */
+    background: linear-gradient(135deg, #00feba, #5b548a);  /* Background me 135° angle par 2 colors ka smooth gradient lagta hai */
+    color: #fff;
+    margin: 100px auto 0;   /* Top se 100px space, left/right center (auto), aur bottom se 0 margin */ /* ➡️ margin-bottom: 0 ho jaata hai — yani card ke neeche koi space nahi milega. */
+    border-radius: 20px;
+    padding: 40px 35px;     /* andar se vertical padding 40px (top/bottom), horizontal padding 35px (left/right) */
+    text-align: center;     /* Card ke andar ka saara text center align rahega */
+}
+
+
+.search {
+    width: 100%;    /* Takes full width of its parent container */
+    display: flex;  /* Uses Flexbox layout to arrange child elements in a row */
+    align-items: center;    /* Vertically centers all child elements along the cross axis (Y-axis) */
+    justify-content: space-between; /* Places the first child at the start, last child at the end, and equal space between all */
+}
+
+.search input {
+    border: 0;                  /* Removes the default border from the input field */
+    outline: 0;                 /* Removes the blue highlight/border shown on focus */
+    background: #ebfffc;        
+    color: #555;              
+    padding: 10px 25px;         /* Adds space: 10px top/bottom, 25px left/right inside the input */
+    height: 60px;               /* Fixes the height of the input box */
+    border-radius: 30px;        
+    flex: 1;                    /* Allows the input to grow and fill remaining space in the flex container */
+    margin-right: 16px;         /* Adds space between the input and the next element (like a search button) */
+    font-size: 18px;            /* Increases the size of the input text for better readability */
+}
+
+.search button{
+    border: 0;
+    outline: 0;
+    background: #ebfffc;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+}
+
+.search button img{
+    width: 16px;
+}
+
+.weather-icon{
+    width: 170px;
+    margin-top: 30px;
+}
+
+.weather h1{
+    font-size: 80px;
+    font-weight: 500;
+}
+
+.weather h2{
+    font-size: 45px;
+    font-weight: 400;
+    margin-top: -10px;
+}
+
+.details{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    margin-top: 50px;
+}
+
+.col{
+    display: flex;
+    align-items: center;    /* This CSS property is used with Flexbox containers (display: flex) and helps in vertically centering the child elements along the cross-axis. */
+    text-align: left;   /* This CSS property is used to align inline text (or inline-level content) to the left side of its container. */
+}
+
+.col img{
+    width: 40px;    /* The element’s horizontal size (left to right) will be exactly 40 pixels wide. It doesn’t grow or shrink with the screen — it stays fixed. */
+    margin-right: 10px;
+}
+
+.humidity, .wind{
+    font-size: 28px;
+    margin-top: -6px;
+}
+
+/* This means the weather details (temperature, city name, humidity, wind speed) are hidden by default. */
+.weather{
+    /* if now we enter city name in searchBox and click on search icon it will not display the detail bco2 we have added the display none
+    so we have to make this display block when we will enter the city name  */
+    display: none;
+}
+
+.error{
+    text-align: left;
+    margin-left: 10px;
+    font-size: 14px;
+    margin-top: 10px;
+    /* if i refresh the website this error msg is displaying by default
+    so we have to hide this error msg and it will be displayed whenever user will enter any wrong city name 
+    */
+    /* if know i enter any wrong city name it is not displaying anything 
+    so we have to display error msg  */
+    display: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

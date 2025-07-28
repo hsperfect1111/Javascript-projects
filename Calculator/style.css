@@ -1,0 +1,102 @@
+* {
+    margin: 0;  /* Browsers kuch default margins lagate hain (e.g. <body>, <h1> etc.), jo layout ko inconsistent bana sakte hain. */
+    padding: 0; /* Ye bhi elements ke andar ki spacing (padding) hata deta hai, jo by default browsers laga sakte hain. */
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box; /* Normally, CSS me element ki width sirf width se set hoti hai. Lekin agar padding aur border ho, to wo width me add ho jaate hain (default behavior: content-box). border-box lagane se padding aur border width ke andar hi count hoti hai, jisse layout banana asaan ho jata hai aur overflow issues nahi aate. */
+}
+
+.container {
+    width: 100%;
+    height: 100vh;
+    background: #e3f9ff;
+    display: flex;
+    align-items: center;    /* ek CSS Flexbox property hai jo kisi container ke cross-axis (i.e., vertical direction by default) me uske child elements ko center karta hai. */
+    justify-content: center;    /* horizontal centering */
+}
+
+.calculator {
+    background: #3a4452;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+/* .calculator form input : This targets all <input> elements inside a <form> which is inside an element with the class .calculator. */
+.calculator form input {
+    border: 0;  /* Removes the default border around the input. */
+    outline: 0; /* Removes the focus outline (that usually shows when you click or tab into the input). */
+    width: 60px; /* Makes the input a square box — typical for calculator buttons. */
+    height: 60px; /* Makes the input a square box — typical for calculator buttons. */
+    border-radius: 10px;
+    /* There is 2-shadow light in the top left side and dark in the right bottom  */
+    /* Adds a dual shadow:
+    – Light shadow on top-left (gives a "raised" look)
+    – Dark shadow on bottom-right (depth effect)
+    👉 This mimics neumorphism style. */
+    box-shadow: -8px -8px 15px rgba(255, 255, 255, 0.1), 5px 5px 15px rgba(0, 0, 0, 0.2);
+    background: transparent;
+    font-size: 20px;
+    color: #fff;
+    cursor: pointer;
+    margin: 10px;
+}
+
+form .display{
+    display: flex;
+    justify-content: flex-end;  /* horizontal centering , justify-content: flex-end; is a Flexbox property used to align items to the end of the main axis of a flex container.*/
+    margin: 20px 0;
+}
+
+form .display input{
+    text-align: right;  /* 	Aligns the input text to the right side — perfect for calculator displays, where numbers typically appear on the right as you type them. */
+    flex: 1;    /* Makes the input grow and fill available horizontal space in a Flexbox layout. It means: grow = 1, shrink = 1, basis = 0 — so it stretches. */
+    font-size: 45px;
+    box-shadow: none;   /* Removes any shadows from the input field — likely for a flat, clean display appearance. */
+}
+
+/* You can see equal button is in the square form so we will inc its width so it will use the double space  */
+form input.equal{
+    width: 145px;
+}
+
+form input.operator{
+    color: #33ffd8;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

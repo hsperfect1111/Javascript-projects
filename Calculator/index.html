@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator using javascript - Easy Tutorials</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="calculator">
+            <form id="calcForm">
+                <div class="display">
+                    <!-- Display screen to show current input and calculated result -->
+                    <input type="text" id="display" readonly />
+                </div>
+                <div>
+                    <!-- First row: special operators -->
+                    <!-- AC: Clears entire input -->
+                    <input type="button" value="AC" class="operator" data-action="clear" />
+                    <!-- IMP : we have to delete one number  -->
+                    <!-- Delete the last character from input -->
+                    <input type="button" value="DE" class="operator" data-action="delete" />
+                    <!-- Decimal point -->
+                    <input type="button" value="." class="operator" data-value="." />
+                    <!-- Division operator -->
+                    <input type="button" value="/" class="operator" data-value="/" />
+                </div>
+                <div>
+                    <!-- Number and operator buttons -->
+                    <!-- Each button adds its value to the display when clicked -->
+                    <!-- we have to add click feature in these numbers -->
+                    <!-- When we click the "7" button again, nothing happens. Add functionality to display it multiple times when clicked repeatedly. -->
+                    <input type="button" value="7" data-value="7" />
+                    <input type="button" value="8" data-value="8" />
+                    <input type="button" value="9" data-value="9" />
+                    <input type="button" value="*" class="operator" data-value="*" />
+                </div>
+                <div>
+                    <input type="button" value="4" data-value="4" />
+                    <input type="button" value="5" data-value="5" />
+                    <input type="button" value="6" data-value="6" />
+                    <input type="button" value="-" class="operator" data-value="-" />
+                </div>
+                <div>
+                    <input type="button" value="1" data-value="1" />
+                    <input type="button" value="2" data-value="2" />
+                    <input type="button" value="3" data-value="3" />
+                    <input type="button" value="+" class="operator" data-value="+" />
+                </div>
+                <div>
+                    <input type="button" value="00" data-value="00" />
+                    <input type="button" value="0" data-value="0" />
+                    <!-- Equals button to perform the calculation -->
+                    <!-- /* You can see equal button is in the square form so we will inc its width so it will use the double space  */ -->
+                    <!-- IMP : calculate the result -->
+                    <input type="button" value="=" class="equal operator" data-action="calculate" />
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- External JavaScript file that handles button clicks, input display, clearing, deletion, and calculation -->
+    <script src="app.js" defer></script>
+</body>
+</html>
+
